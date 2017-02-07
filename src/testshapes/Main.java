@@ -48,21 +48,31 @@ public class Main {
             System.out.println("Second " + masShapes[8].getClass().toString().substring(j+1) + " is less than first " + masShapes[7].getClass().toString().substring(j+1));
         else
             System.out.println("Second " + masShapes[8].getClass().toString().substring(j+1) + " is more than first " + masShapes[7].getClass().toString().substring(j+1));
-        //print Array of Shapes and their areas
+        //print Array of Shapes (color and sizes) and their areas
         System.out.println("***************************************************");
         for(Drawable shp : masShapes){
             shp.draw();
         }
-
+        //create and initialization of massive of rectangles
         Rectangle[] arr2 = new Rectangle[6];
-
         for(i=0; i<6; i++){
             arr2[i] = new Rectangle(Shape.shapeColors[i], i+2, i+3);
         }
         arr2[3] = new Rectangle("BLUE", 100, 30);
+
+        //sort array of rectangles by result of working calcArea method
+        System.out.println("***Sort rectangles by calcArea***");
         Arrays.sort(arr2);
 
         for(Rectangle r : arr2) {
+            r.draw();
+        }
+
+        //sort array of rectangles by shapeColor field
+        System.out.println("***Sort rectangles by color***");
+        Arrays.sort(arr2, new ShapeColorComparator());
+
+        for (Rectangle r : arr2) {
             r.draw();
         }
 
